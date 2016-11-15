@@ -114,6 +114,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	            onKeyDown: onKeyDown || Util.noop
 	        };
 
+	        owner.inputTypeOptions = {
+	            tel: 1,
+	            text: 1
+	        };
+
 	        (options || {}).initValue = value;
 
 	        owner.properties = DefaultProperties.assign({}, options);
@@ -354,6 +359,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    render: function render() {
 	        var owner = this;
 	        var _owner$props2 = owner.props;
+	        var inputTypeOptions = owner.inputTypeOptions;
 	        var value = _owner$props2.value;
 	        var options = _owner$props2.options;
 	        var onKeyDown = _owner$props2.onKeyDown;
@@ -364,7 +370,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var propsToTransfer = _objectWithoutProperties(_owner$props2, ['value', 'options', 'onKeyDown', 'onChange', 'onInit', 'htmlRef']);
 
 	        return React.createElement('input', _extends({
-	            type: 'text',
+	            type: inputTypeOptions[options.inputType] || 'text',
 	            ref: htmlRef,
 	            value: owner.state.value,
 	            onKeyDown: owner.onKeyDown,
